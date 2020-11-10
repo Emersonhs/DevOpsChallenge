@@ -33,9 +33,16 @@ steps:
     command: 'publish'
     publishWebProjects: false
     projects: 'src/MyWebApp.sln'
-    arguments: '-c Release -o $(Build.ArtifactStagingDirectory)/Output'
+    arguments: '-c Release -o $(Build.ArtifactStagingDirectory)'
     verbosityPack: 'Detailed'
+    buildProperties: 
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'Pacote'
+    publishLocation: 'Container'
