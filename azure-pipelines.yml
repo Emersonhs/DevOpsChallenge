@@ -34,7 +34,7 @@ steps:
     publishWebProjects: false
     projects: 'src/MyWebApp.sln'
     arguments: '-c Release -o $(Build.ArtifactStagingDirectory)/Output'
-    workingDirectory: src
+    verbosityPack: 'Detailed'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
