@@ -32,9 +32,9 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: 'MyWebApp.sln'
+    projects: 'DevOpsChallenge/src/MyWebApp.sln'
     arguments: '-c Release -o $(Build.ArtifactStagingDirectory)/Output'
-    workingDirectory: src
+#    workingDirectory: src
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
