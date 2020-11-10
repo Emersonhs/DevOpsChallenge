@@ -33,7 +33,7 @@ steps:
     command: 'publish'
     publishWebProjects: false
     projects: 'MyWebApp.sln'
-    arguments: '-c Release -o$(build.artifactstagingdirectory)'
+    arguments: '-c Release -o $(Build.ArtifactStagingDirectory)/Output'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
