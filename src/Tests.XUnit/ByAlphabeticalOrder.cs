@@ -6,7 +6,7 @@ namespace XUnit.Project
     public class ByAlphabeticalOrder
     {
         public static bool Test1Called = true;
-        public static bool Test2Called = true
+        public static bool Test2Called = true;
         public static bool Test3Called = true;
 
         [Fact]
