@@ -5,9 +5,9 @@ namespace XUnit.Project
     [TestCaseOrderer("XUnit.Project.Orderers.AlphabeticalOrderer", "XUnit.Tests")]
     public class ByAlphabeticalOrder
     {
-        public static bool Test1Called = false;
-        public static bool Test2Called = false;
-        public static bool Test3Called = false;
+        public static bool Test1Called = true;
+        public static bool Test2Called = true
+        public static bool Test3Called = true;
 
         [Fact]
         public void Test1()

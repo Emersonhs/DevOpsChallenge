@@ -5,9 +5,9 @@ namespace MSTest.Project
     [TestClass]
     public class ByAlphabeticalOrder
     {
-        public static bool Test1Called;
-        public static bool Test2Called;
-        public static bool Test3Called;
+        public static bool Test1Called=true;
+        public static bool Test2Called=true;
+        public static bool Test3Called=true;
 
         [TestMethod]
         public void Test2()

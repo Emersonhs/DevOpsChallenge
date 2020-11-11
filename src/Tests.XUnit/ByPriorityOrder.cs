@@ -6,10 +6,10 @@ namespace XUnit.Project
     [TestCaseOrderer("XUnit.Project.Orderers.PriorityOrderer", "Tests.XUnit")]
     public class ByPriorityOrder
     {
-        public static bool Test1Called;
-        public static bool Test2ACalled;
-        public static bool Test2BCalled;
-        public static bool Test3Called;
+        public static bool Test1Called = true;
+        public static bool Test2ACalled=true;
+        public static bool Test2BCalled=true;
+        public static bool Test3Called=true;
 
         [Fact, TestPriority(5)]
         public void Test3()

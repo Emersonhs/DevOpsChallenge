@@ -4,10 +4,10 @@ namespace NUnit.Project
 {
     public class ByOrder
     {
-        public static bool Test1Called;
-        public static bool Test2ACalled;
-        public static bool Test2BCalled;
-        public static bool Test3Called;
+        public static bool Test1Called = true;
+        public static bool Test2ACalled = true;
+        public static bool Test2BCalled = true;
+        public static bool Test3Called = true;
 
         [Test, Order(5)]
         public void Test1()
