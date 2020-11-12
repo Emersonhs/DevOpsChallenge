@@ -28,8 +28,7 @@ steps:
     publishWebProjects: false
     projects: 'src/MyWebApp.sln'
     arguments: '-c Release -o $(Build.ArtifactStagingDirectory)'
-    verbosityPack: 'Detailed'
-    buildProperties: 
+    zipAfterPublish: false
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
