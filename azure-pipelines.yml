@@ -42,7 +42,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: 'src\MyWebApp\Dockerfile'
+    Contents: 'Dockerfile'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     OverWrite: true
 - task: PublishBuildArtifacts@1
