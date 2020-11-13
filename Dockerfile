@@ -4,4 +4,4 @@ EXPOSE 443
 LABEL version="1.0" maintainer="Emerson Henrique"
 WORKDIR /App
 COPY ./ .
-ENTRYPOINT ["dotnet", "App/MyWebApp.dll"]
+ENTRYPOINT ["dotnet", "MyWebApp.dll"]
