@@ -3,5 +3,5 @@ EXPOSE 80
 EXPOSE 443
 LABEL version="1.0" maintainer="Emerson Henrique"
 WORKDIR /App
-COPY ./ .
+COPY Emersonhs.DevOpsChallenge/Pacote .
 ENTRYPOINT ["dotnet", "MyWebApp.dll"]
