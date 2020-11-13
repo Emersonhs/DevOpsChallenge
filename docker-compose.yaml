@@ -5,6 +5,7 @@ services:
     container_name: "latest"
     ports:
       - 5000:80
+      - 5001:443
     volumes:
       - .:/app
     command: ["dotnet", "run"]
