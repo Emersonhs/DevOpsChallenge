@@ -20,7 +20,7 @@ steps:
     command: 'publish'
     publishWebProjects: false
     projects: 'src/MyWebApp.sln'
-    arguments: '-c Release -r linux-musl-x64 --self-contained -o $(Build.ArtifactStagingDirectory)'
+    arguments: '-c Release --self-contained -o $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: false
     modifyOutputPath: false
 - task: VSTest@2
