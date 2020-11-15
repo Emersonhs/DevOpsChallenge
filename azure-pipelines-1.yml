@@ -21,7 +21,7 @@ steps:
     publishWebProjects: false
     projects: 'src/MyWebApp.sln'
     arguments: '-c Release -r win-x64 --self-contained -o $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: true
+    zipAfterPublish: false
     modifyOutputPath: false
 - task: VSTest@2
   inputs:
