@@ -8,4 +8,4 @@ services:
       - 5001:443
     volumes:
       - .:/app
-    command: ["dotnet", "run"]
+    command: ["dotnet", "exec"]
