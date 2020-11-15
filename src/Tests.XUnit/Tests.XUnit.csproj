@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
     <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <UseAppHost>true</UseAppHost>
     <Nullable>enable</Nullable>
   </PropertyGroup>
