@@ -38,7 +38,7 @@ steps:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
       Dockerfile
-      docker-compose.yaml
+      docker-compose.yml
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     OverWrite: true
 - task: PublishBuildArtifacts@1
