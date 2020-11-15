@@ -6,6 +6,6 @@ services:
     ports:
       - 5000:80
       - 5001:443
-    volumes:
-      - app:/app
+   volumes:
+     - app:/app
     command: ["dotnet", "exec"]
