@@ -46,3 +46,12 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'Pacote'
     publishLocation: 'Container'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'niboRegistry'
+    repository: 'nibo'
+    command: 'buildAndPush'
+    Dockerfile: '$(System.DefaultWorkingDirectory)/Build - NiboDocker/Pacote/Dockerfile'
+    tags: |
+      $(Build.BuildNumber)
+      latest
