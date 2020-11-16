@@ -6,52 +6,59 @@
 trigger:
 - master
 name: '$(Date:dd-MM-yyyy).$(Rev:r)'
-pool:
-  vmImage: 'windows-latest'
-
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-steps:
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet publish'
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: 'src/MyWebApp.sln'
-    arguments: '-c Release -o $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: false
-    modifyOutputPath: false
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\*tests*.dll
-      !**\*TestsAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: |
-      Dockerfile
-      docker-compose.yml
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    OverWrite: true
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'Pacote'
-    publishLocation: 'Container'
-- task: Docker@2
-  inputs:
-    containerRegistry: 'niboRegistry'
-    repository: 'nibo'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-    tags: |
-      $(Build.BuildNumber)
-      latest
+jobs:
+- job: Windows
+  pool:
+   vmImage: 'windows-latest'
+  variables:
+    solution: '**/*.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Release'
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet publish'
+    inputs:
+      command: 'publish'
+      publishWebProjects: false
+      projects: 'src/MyWebApp.sln'
+      arguments: '-c Release -o $(Build.ArtifactStagingDirectory)'
+      zipAfterPublish: false
+      modifyOutputPath: false
+  - task: VSTest@2
+    inputs:
+      testSelector: 'testAssemblies'
+      testAssemblyVer2: |
+        **\*tests*.dll
+        !**\*TestsAdapter.dll
+        !**\obj\**
+      searchFolder: '$(System.DefaultWorkingDirectory)'
+      platform: '$(buildPlatform)'
+      configuration: '$(buildConfiguration)'
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(System.DefaultWorkingDirectory)'
+      Contents: |
+        Dockerfile
+        docker-compose.yml
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      OverWrite: true
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'Pacote'
+      publishLocation: 'Container'
+- job: Linux
+  pool:
+   vmImage: 'ubuntu-latest'
+   name: buildDocker
+   steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'niboRegistry'
+        repository: 'nibo'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: |
+          $(Build.BuildNumber)
+                latest
+     
