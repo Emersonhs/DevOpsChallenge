@@ -51,7 +51,7 @@ steps:
     containerRegistry: 'niboRegistry'
     repository: 'nibo'
     command: 'buildAndPush'
-    Dockerfile: '$(System.DefaultWorkingDirectory)/Build - NiboDocker/Pacote/Dockerfile'
+    Dockerfile: '**/Dockerfile'
     tags: |
       $(Build.BuildNumber)
       latest
