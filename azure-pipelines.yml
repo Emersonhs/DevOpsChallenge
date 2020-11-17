@@ -16,7 +16,7 @@ jobs:
     buildConfiguration: 'Release'
   steps:
   - task: DotNetCoreCLI@2
-    displayName: 'dotnet publish'
+    displayName: 'publish MyWebApp'
     inputs:
       command: 'publish'
       publishWebProjects: false
@@ -25,6 +25,7 @@ jobs:
       zipAfterPublish: false
       modifyOutputPath: false
   - task: VSTest@2
+    displayName: 'Testes Unitarios'
     inputs:
       testSelector: 'testAssemblies'
       testAssemblyVer2: |
@@ -35,6 +36,7 @@ jobs:
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
   - task: CopyFiles@2
+    displayName: 'Copy Arquivos'
     inputs:
       SourceFolder: '$(System.DefaultWorkingDirectory)'
       Contents: |
@@ -43,6 +45,7 @@ jobs:
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
       OverWrite: true
   - task: PublishBuildArtifacts@1
+    displayName: 'Publica Artefato'
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       ArtifactName: 'Pacote'
