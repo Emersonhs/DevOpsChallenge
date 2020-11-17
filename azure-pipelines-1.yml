@@ -53,12 +53,12 @@ jobs:
    name: buildDocker
    steps:
     - task: Docker@2
+      displayName: buildAndPush
       inputs:
-        containerRegistry: 'niboRegistry'
-        repository: 'nibo'
+        containerRegistry: niboRegistry
+        repository: nibo
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: |
           $(Build.BuildNumber)
                 latest
-     
