@@ -6,23 +6,43 @@ Repositorio que fiz o Fork do projeto de teste
        - https://github.com/Emersonhs/DevOpsChallenge
 Projeto Azure DevOps: 
        -  https://niboteste.visualstudio.com/DevOps
-         Criei um buil e uma release que faz deploy em um web app no azure cloud
-         o build roda o teste altomatizado e quebra o build caso os testes não passem
-   
-    o Release ja faz o teste no Healthcheck para sabermos se a aplicação funcionou.
-        - Healthcheck de HML - https://niboteste-hml.azurewebsites.net/TesteNibo/Healthcheck
-        - Healthcheck de PRD - https://niboteste.azurewebsites.net/TesteNibo/Healthcheck
-    Na parte de Azure cloud 
-        - Criei uma Resouce Group chamado TesteNibo
-        - criei um web app para implantar as APIs.
-        - habilitei o aplication insatis para monitoramento 
+    Existem dois builds:
+      Build 1 - Nibo Web App - esse fa um build roda os testes automatizados e ativa uma release que vai fazer um Deploy em um ambiente de HML e se o teste de Healthcheck passar ele faz o Deploy em 
+                                ambiente de produção.
+                                URLs
+                                    URL Index
+                                        - HML - https://nibowebapp-hml.azurewebsites.net/
+                                        - PRD - https://nibowebapp.azurewebsites.net/
+                                    URL Healthcheck
+                                        - Healthcheck de HML - https://nibowebapp-hml.azurewebsites.net//TesteNibo/Healthcheck
+                                        - Healthcheck de PRD - https://nibowebapp.azurewebsites.net//TesteNibo/Healthcheck
+                                Recrusos Usados:
+                                    Azure DevOps:
+                                        - Build e Release
+                                    Azure Cloud
+                                        - Resouce Group chamado NiboWebApp
+                                        - Web App
+                                        - aplication insatis para monitoramento
+
+     Build 2  - Nibo Web App Docker - esse fa um build roda os testes automatizados, cria uma imagem docker e publica essa imagem em uma Registry no Azure.
+                                      Logo depois a Release e ativada fazendo o deploy da imagem do Registry no Web App configurado p rodar container em ambiente de HML.
+                                     Se o Healthcheck passar em HML o pipeline faz o deploy em Produção.
+                                URLs
+                                    URL Index
+                                        - HML - https://niboteste-hml.azurewebsites.net
+                                        - PRD - https://niboteste.azurewebsites.net
+                                    URL Healthcheck
+                                        - Healthcheck de HML - https://niboteste-hml.azurewebsites.net/TesteNibo/Healthcheck
+                                        - Healthcheck de PRD - https://niboteste.azurewebsites.net/TesteNibo/Healthcheck
+                                Recrusos Usados:
+                                    Azure DevOps:
+                                        - Build e Release
+                                    Azure Cloud
+                                        - Resouce Group chamado Nibo
+                                        - Web App for containers
+                                        - Azure registry
 OSB
     se precisarem de acesso a todos os links pode me retornar com um email que adiono na hora.
-
-OBS Sobre o Docker
-    - Como estou de ferias e londe de casa não estou com meu notebook com as configurações necessarias para rodar o Docker e assim conseguiria testar a API e configurar meu dockerfile melhor(o computador do hotel não e muito bom..rsrsr).
-    mas mesmo assim escrevi um dockerfile e um docker-composer e coloquei dentro do projeto(não sei se esta funcionando pois não tenho maquina para gerar a imagem desse arquivo).
-    Na parte de cloud eu criei um Registry no azure cloud para armazenar minhas imagens e um web app configurado para rodar em container. depois e socriar o pipeline para fazer o deploy dessa aplicação com o container.
 
 Pessoal, qualquer duvida estou a disposição para explicar melhor a ideia. inclusive sobre a parte de docker 
 que não foi possivel fazer.
