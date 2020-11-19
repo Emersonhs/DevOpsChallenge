@@ -6,6 +6,7 @@ Repositorio que fiz o Fork do projeto de teste
        - https://github.com/Emersonhs/DevOpsChallenge
 Projeto Azure DevOps: 
        -  https://niboteste.visualstudio.com/DevOps
+       
     Existem dois builds:
       Build 1 - Nibo Web App - esse fa um build roda os testes automatizados e ativa uma release que vai fazer um Deploy em um ambiente de HML e se o teste de Healthcheck passar ele faz o Deploy em 
                                 ambiente de produção.
