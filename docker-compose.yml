@@ -1,14 +1,14 @@
 version: "3"
 services:
   app:
-    image: nibo
+    image: semear
     build:
       context: .
     ports:
       - 5000:80
       - 5001:443
     networks:
-      - nibo-network
+      - semear-network
   #command: ["dotnet", "MyWebApp.dll"]
 networks:
   nibo-network:
